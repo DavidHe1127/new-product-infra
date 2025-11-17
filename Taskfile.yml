@@ -1,0 +1,44 @@
+# https://taskfile.dev/
+version: '3'
+
+env:
+  PULUMI_CONFIG_PASSPHRASE: ''
+  PULUMI_SKIP_CONFIRMATIONS: 'true'
+  PULUMI_SKIP_UPDATE_CHECK: 'true'
+  PULUMI_SELF_MANAGED_STATE_LOCKING: 1
+  AWS_DEFAULT_REGION: ap-southeast-2
+  AWS_REGION: ap-southeast-2
+  AWS_PROFILE: dev
+  PULUMI_STACK: dev
+
+tasks:
+  node_modules:
+    cmds:
+      - npm install
+    sources:
+      - package-lock.json
+    generates:
+      - node_modules/**
+    method: timestamp
+
+  login:
+    cmds:
+      # this is for demo purpose. Please consider using remote backend like s3 in prod environment
+      - pulumi login --local
+
+  stack:
+    deps:
+      - node_modules
+    cmds:
+      - pulumi stack select ${PULUMI_STACK} || pulumi stack init ${PULUMI_STACK}
+
+  preview:
+    deps:
+      - node_modules
+      - stack
+    cmds:
+      - pulumi preview --stack "${PULUMI_STACK}" --refresh --suppress-permalink=true --emoji --color always
+
+  up:
+    cmds:
+      - pulumi up --stack "${PULUMI_STACK}" --yes --refresh --suppress-permalink=true --emoji --color always

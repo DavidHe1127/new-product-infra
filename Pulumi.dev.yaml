@@ -1,0 +1,7 @@
+encryptionsalt: v1:1rzMLP0NX3Q=:v1:OBNvcoBXjbwO1m1F:tSOki33T3/KZOE/75Am4TsDVePlM3Q==
+config:
+  aws:profile: dev
+  aws:region: ap-southeast-2
+  aws:accountId: 908501223087
+  app:name: david-product-infra
+  app:dir: static
