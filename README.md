@@ -105,6 +105,7 @@ I'd make the follwing improvements:
 - Prevent access to my site from default distribution domain. This can be achieved via WAF.
 - Enable standard logging.
 - Enable monitoring & alerting on common metrics - error rate, cache hit rate and origin latency.
+- Dockerising tasks in Taskfile to create consistent dev environment.
 
 ### Alternative solutions that you could have taken but didn’t and explain why.
 
