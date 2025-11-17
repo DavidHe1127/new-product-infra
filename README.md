@@ -1,5 +1,5 @@
-# new-product-infra
-It contains infra to host the website of David's new product.
+# David He's New Product
+It contains a website and its infra to display David's new product. Please visit the website at https://d33r46kxfnjkg2.cloudfront.net/.
 
 ## Pre-requisites
 
